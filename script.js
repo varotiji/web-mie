@@ -1,57 +1,54 @@
-// --- KONFIGURASI NOMOR WHATSAPP ---
-const WA_NUMBER = "6287894457000"; 
+// --- 1. NAVBAR SCROLL EFFECT ---
+const header = document.querySelector('header');
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. Fungsi Klik Global
-    document.addEventListener('click', function(e) {
-        
-        // CEK A: Jika klik tombol "Pesan" di menu (Ayam Geprek, Mie, dll)
-        if(e.target.classList.contains('btn-order')) {
-            e.preventDefault();
-            const itemName = e.target.getAttribute('data-item');
-            const message = `Halo Bu Sri, saya ingin pesan: ${itemName}. Mohon info totalnya ya.`;
-            const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, '_blank');
-        }
-
-        // CEK B: Jika klik tombol WA umum (Navbar/Footer)
-        else if(e.target.closest('.main-wa-link')) {
-            e.preventDefault(); 
-            const message = "Halo Bu Sri, saya ingin tanya-tanya tentang Menu Anda.";
-            const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, '_blank');
-        }
-    });
-
-    // 2. Smooth Scroll untuk Navigasi Internal
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId !== "#" && targetId.startsWith("#")) {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-    });
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.style.background = 'rgba(42, 4, 4, 0.98)'; // Maroon makin solid
+        header.style.padding = '10px 0';
+        header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+    } else {
+        header.style.background = 'rgba(74, 8, 8, 0.95)';
+        header.style.padding = '20px 0';
+        header.style.boxShadow = 'none';
+    }
 });
 
-// 3. Animasi Reveal saat Scroll
+// --- 2. SCROLL REVEAL (MUNCUL PERLAHAN) ---
+const observerOptions = {
+    threshold: 0.1
+};
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('fade-in');
         }
     });
-}, { threshold: 0.1 });
+}, observerOptions);
 
-document.querySelectorAll('.menu-card, .feature-card, .list-category, .testi-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = '0.8s all ease-out';
+// Targetkan kotak fitur dan kartu menu
+document.querySelectorAll('.feature-card, .menu-card').forEach(el => {
+    el.classList.add('hidden-el'); // Pastikan class ini ada di CSS
     observer.observe(el);
+});
+
+// --- 3. TOMBOL PESAN (DIRECT KE WHATSAPP) ---
+document.querySelectorAll('.btn-order').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const menuName = e.target.parentElement.querySelector('h4').innerText;
+        const message = `Halo Sate Premium, saya mau pesan menu: ${menuName}. Mohon infonya!`;
+        const whatsappURL = `https://wa.me/628123456789?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappURL, '_blank');
+    });
+});
+
+// --- 4. SMOOTH SCROLL ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });

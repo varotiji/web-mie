@@ -1,312 +1,288 @@
-/* --- 1. RESET & VARIABLE --- */
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+/* --- 1. CORE & PREMIUM RED VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
 
 :root {
-    --gold: #c5a059;
-    --gold-dark: #a68342;
-    --dark-bg: #0f0f0f;
-    --dark-card: #1a1a1a;
+    --maroon-deep: #4a0808;
+    --red-vibrant: #b91c1c;
+    --red-glow: #ef4444;
+    --dark-matte: #0c0202;
     --white: #ffffff;
-    --gray-text: #94a3b8;
-    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --white-soft: #f4f4f4;
+    --gold: #ffc107; /* Warna emas untuk harga */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--dark-bg);
+    background-color: var(--dark-matte);
     color: var(--white);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.7;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
+/* Container Standar untuk Badan Web agar tetap di tengah */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 24px;
 }
 
-/* --- 2. HEADER & NAVIGATION --- */
+/* --- 2. HEADER (LOGO PENTOK KIRI) --- */
 header {
-    background: rgba(15, 15, 15, 0.85);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
-    padding: 1.2rem 0;
+    background: rgba(74, 8, 8, 0.98);
+    height: 90px;
+    display: flex;
+    align-items: center;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    border-bottom: 3px solid var(--red-vibrant);
 }
 
 header .container {
+    max-width: 100% !important; /* Rahasia logo mentok kiri */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 40px;
 }
 
 .logo {
-    font-family: 'Marcellus', serif;
+    font-weight: 800;
     font-size: 1.6rem;
-    color: var(--gold);
-    letter-spacing: 1px;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-decoration: none;
 }
+
+nav { display: flex; align-items: center; }
 
 nav a {
     text-decoration: none;
     color: var(--white);
     font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    font-weight: 700;
     margin-left: 2rem;
-    transition: var(--transition);
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-nav a:hover {
-    color: var(--gold);
-}
+nav a:hover { color: var(--red-glow); }
 
 .btn-wa {
-    background: var(--gold);
-    color: var(--dark-bg) !important;
-    padding: 0.8rem 1.8rem;
-    border-radius: 2px; /* Sharp corners for premium look */
+    background: var(--white);
+    color: var(--maroon-deep) !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-left: 2rem;
+    font-weight: 800;
+    text-decoration: none;
 }
 
-/* --- 3. HERO SECTION --- */
+/* --- 3. HERO SECTION & TOMBOL GEDE --- */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1600') center/cover;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1552611052-33e04de081de?q=80&w=1600');
-    background-size: cover;
-    background-position: center;
+    padding-top: 90px;
 }
 
 .hero-content h2 {
-    font-family: 'Marcellus', serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.2rem, 8vw, 5rem);
+    font-weight: 800;
+    text-transform: uppercase;
     line-height: 1.1;
-    color: var(--white);
+    margin-bottom: 25px;
 }
 
-.hero-content p {
-    font-size: 1.1rem;
-    color: var(--gray-text);
-    max-width: 700px;
-    margin: 0 auto 2.5rem;
-}
-
+/* Tombol "Lihat Menu Kami" yang besar */
 .btn-primary {
     display: inline-block;
-    padding: 1rem 2.5rem;
-    border: 1px solid var(--gold);
-    color: var(--gold);
+    padding: 20px 60px;
+    background: linear-gradient(135deg, var(--red-vibrant), #7a0c0c);
+    color: white !important;
     text-decoration: none;
+    font-weight: 800;
+    font-size: 1.1rem;
+    border-radius: 50px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: var(--transition);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    margin-top: 30px;
 }
 
 .btn-primary:hover {
-    background: var(--gold);
-    color: var(--dark-bg);
+    transform: translateY(-5px);
+    background: var(--white);
+    color: var(--maroon-deep) !important;
+    box-shadow: 0 15px 30px rgba(185, 28, 28, 0.4);
 }
 
-/* --- 4. FEATURE CARDS --- */
-.features { padding: 100px 0; }
+/* --- 4. MENU GRID & TOMBOL PESAN --- */
+.menu-section { padding: 100px 0; }
 
 .section-title {
-    font-family: 'Marcellus', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 4rem;
-    color: var(--gold);
+    margin-bottom: 60px;
+    text-transform: uppercase;
 }
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.feature-card {
-    background: var(--dark-card);
-    padding: 3rem 2rem;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: var(--transition);
-}
-
-.feature-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-5px);
-}
-
-.feature-card .icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
-.feature-card h4 { margin-bottom: 1rem; font-size: 1.3rem; letter-spacing: 1px; }
-
-/* --- 5. MENU SECTION --- */
-.menu-section { padding-bottom: 100px; }
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .menu-card {
-    background: var(--dark-card);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: #1a0505;
+    border-radius: 12px;
     overflow: hidden;
-    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
-.menu-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    filter: brightness(0.8);
-    transition: var(--transition);
+.menu-card img { width: 100%; height: 250px; object-fit: cover; }
+
+.menu-info { 
+    padding: 25px; 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1;
 }
 
-.menu-card:hover img {
-    filter: brightness(1);
-    transform: scale(1.05);
+.price {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--gold); /* Harga warna emas biar premium */
+    margin: 15px 0;
 }
 
-.menu-info { padding: 2rem; }
-
-.menu-info h4 { font-family: 'Marcellus', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
-.rating { color: var(--gold); margin-bottom: 1rem; }
-.price { font-size: 1.5rem; font-weight: 300; color: var(--gold); margin-bottom: 1.5rem; }
-
+/* Tombol "Pesan Sekarang" Modern */
 .btn-order {
     width: 100%;
-    padding: 1rem;
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
+    padding: 16px;
+    background: linear-gradient(135deg, var(--red-vibrant), #7a0c0c);
+    color: white;
+    font-weight: 800;
+    border: none;
     text-transform: uppercase;
-    font-weight: 700;
     cursor: pointer;
-    transition: var(--transition);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .btn-order:hover {
-    background: var(--gold);
-    color: var(--dark-bg);
+    background: var(--white);
+    color: var(--maroon-deep);
+    transform: translateY(-3px);
 }
 
-/* --- 6. FULL MENU LIST --- */
-.full-menu { background: #0a0a0a; padding: 100px 0; }
+/* --- 5. DOTTED MENU LIST --- */
+.full-menu { padding: 80px 0; background: #080101; }
 
-.menu-list-grid {
+.full-menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
 
-.list-category h4 {
-    color: var(--gold);
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-    font-family: 'Marcellus', serif;
-}
-
-.list-category ul { list-style: none; }
-
-.list-category li {
+.item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.2rem;
-    font-size: 0.95rem;
-    border-bottom: 1px dashed rgba(255,255,255,0.1);
-    padding-bottom: 0.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
-/* --- 7. FEEDBACK & MAP --- */
-.feedback-location { padding: 120px 0; }
+.item span:first-child { display: flex; flex: 1; }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 5rem;
+.item span:first-child::after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px dotted rgba(255,255,255,0.2);
+    margin: 0 10px;
 }
 
-.testi-card {
-    background: var(--dark-card);
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    border-left: 2px solid var(--gold);
-}
-
-.map-wrapper {
-    position: relative;
-    border: 1px solid rgba(197, 160, 89, 0.3);
-    height: 100%;
-}
-
-.map-card-info {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    right: 2rem;
-    background: rgba(15, 15, 15, 0.9);
-    padding: 2rem;
-    border: 1px solid var(--gold);
-}
-
-/* --- 8. FOOTER --- */
+/* --- 6. FOOTER (MEWAH & GEDE) --- */
 footer {
-    padding: 80px 0;
+    padding: 120px 0 60px; 
+    background: linear-gradient(to bottom, #0c0202, #000000);
     text-align: center;
-    border-top: 1px solid rgba(197, 160, 89, 0.15);
+    border-top: 4px solid var(--maroon-deep);
 }
 
-.social-links {
-    margin-bottom: 30px;
+.social-links { 
+    margin-bottom: 40px; 
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 .social-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--white);
-    transition: 0.3s;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-    color: var(--red-vibrant);
-    transform: scale(1.2);
+    color: var(--red-glow);
+    transform: translateY(-8px);
 }
 
-footer p { color: var(--gray-text); font-size: 0.85rem; letter-spacing: 1px; }
+footer p {
+    font-size: 1.1rem;
+    color: var(--white-soft);
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
 
-/* --- ANIMATION CLASSES --- */
-.hidden-el { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
-.fade-in { opacity: 1; transform: translateY(0); }
+/* --- 7. MOBILE OPTIMIZATION --- */
+@media (max-width: 992px) {
+    header .container { padding: 0 20px; }
+    nav {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        flex-direction: column;
+        background: var(--maroon-deep);
+        width: 100%;
+        padding: 30px 0;
+        transition: 0.4s;
+        border-bottom: 2px solid var(--red-vibrant);
+    }
+    nav.active { left: 0; } 
+    nav a { margin: 15px 0; font-size: 1.1rem; }
+    .btn-wa { margin: 0; }
+    .full-menu-grid { grid-template-columns: 1fr; }
+}
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-    .grid-container { grid-template-columns: 1fr; }
-    nav { display: none; }
+@media (max-width: 600px) {
+    footer { padding: 80px 0 40px; }
     .hero-content h2 { font-size: 2.5rem; }
+    .logo { font-size: 1.2rem; }
+    .btn-primary { padding: 15px 40px; font-size: 1rem; }
 }
